@@ -33,9 +33,6 @@ jobs:
       dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
       # Only needed if with:dockerhub-enable is true below
       dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
     with:
       # Required
       # Enable one or both registries
@@ -75,15 +72,10 @@ jobs:
     name: Debug Workspace
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
       - name: Debug Workspace
         run: |
           echo "Workspace: ${{ github.workspace }}"
-
-  debug-context-contents:
-    name: Debug Context Contents
-    runs-on: ubuntu-latest
-    steps:
-      - name: Debug Context Contents
-        run: |
-          ls -lahtr /home/runner/work/example-voting-app/example-voting-app
-          ls -lahtr /home/runner/work/example-voting-app
+          ls -lah ${{ github.workspace }}
