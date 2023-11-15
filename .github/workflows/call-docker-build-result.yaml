@@ -82,4 +82,4 @@ jobs:
     steps:
       - name: Debug Context Contents
         run: |
-          ls -R ${{ github.workspace }}/result
+          ls -R ${{ github.workspace }}
