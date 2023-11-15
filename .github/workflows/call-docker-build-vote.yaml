@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - 'main'
-    # only build when important files change
+    # only build when mportant files change
     paths:
       - 'vote/**'
       - '.github/workflows/call-docker-build-vote.yaml'
