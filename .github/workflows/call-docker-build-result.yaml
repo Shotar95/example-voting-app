@@ -82,4 +82,5 @@ jobs:
     steps:
       - name: Debug Context Contents
         run: |
-          ls -R ${{ github.workspace }}
+          ls -lahtr /home/runner/work/example-voting-app/example-voting-app
+          ls -lahtr /home/runner/work/example-voting-app
