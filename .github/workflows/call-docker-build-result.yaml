@@ -83,3 +83,16 @@ jobs:
       ### Create a PR comment with image tags and labels
       ### defaults to false
       # comment-enable: false
+  debug-workspace:
+    name: Debug Workspace
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug Workspace
+        run: echo "Workspace: ${{ github.workspace }}"
+
+  debug-context-contents:
+    name: Debug Context Contents
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug Context Contents
+        run: ls -R ${{ github.workspace }}/result
