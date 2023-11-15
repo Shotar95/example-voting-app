@@ -17,7 +17,7 @@ on:
       - 'result/**'
       - '.github/workflows/call-docker-build-result.yaml'
   schedule:
-    # re-run montly to keep image fesh with upstream base images
+    # re-run montly t keep image fesh with upstream base images
     - cron: '0 12 15 * *'
 
 jobs:
