@@ -56,7 +56,7 @@ jobs:
         type=raw,value=gha-${{ github.run_id }}
       # Path to where Docker should copy files into the image
       # Defaults to the root of the repository (.)
-      context: .
+      context: result
       # Dockerfile alternate name. Default is Dockerfile (relative to the context path)
       # file: Containerfile
       # Build stage to target, defaults to empty, which builds to the last stage in Dockerfile
