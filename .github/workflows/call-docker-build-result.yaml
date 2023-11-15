@@ -73,11 +73,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Debug Workspace
-        run: echo "Workspace: ${{ github.workspace }}"
+        run: |
+          echo "Workspace: ${{ github.workspace }}"
 
   debug-context-contents:
     name: Debug Context Contents
     runs-on: ubuntu-latest
     steps:
       - name: Debug Context Contents
-        run: ls -R ${{ github.workspace }}/result
+        run: |
+          ls -R ${{ github.workspace }}/result
