@@ -167,6 +167,7 @@ jobs:
 
       - name: Build an image locally
         uses: docker/build-push-action@v5
+        id: cve_scan
         with:
           push: false
           load: true # Export to Docker Engine rather than pushing to a registry
@@ -179,7 +180,7 @@ jobs:
       - name: Run Trivy for all CVEs (non-blocking)
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: docker.io/shotmar/examplevotingapp_vote:pr-3
+          image-ref: ${{ steps.cve_scan.output.imageid }}
           exit-code: 0
           format: table 
 
