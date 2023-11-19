@@ -78,7 +78,8 @@ on:
         # some fire in pr-only, some in push/merge-only
         # I still recommend reusable `latest` tag for human-friendly testing (not servers)
         # I like a full tag for prod images that reads something like `stable-<date>-<commit>`
-        # Tags starting with `gha-<run_id>` are unique to each PR commit, and used to test fresh images      # rules with is_default_branch only create the tag if it's a push/merge to default branch
+        # Tags starting with `gha-<run_id>` are unique to each PR commit, and used to test fresh images      
+        # rules with is_default_branch only create the tag if it's a push/merge to default branch
         # priority attribute is used to sort tags in the final list. The higher the value, 
         #   the higher the priority. The first tag in the list (higher priority) will be used as 
         #   the image version for generated OCI label and version output.
@@ -128,6 +129,13 @@ jobs:
       image-tag: ${{ steps.image-tag.outputs.image-tag }}
 
     steps:
+      - name: Run Trivy for all CVEs (non-blocking)
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ github.run_id }}
+          exit-code: 0
+          format: table 
+          
       - name: Checkout Repository
         uses: actions/checkout@v2
         # we need qemu and buildx so we can build multiple platforms later

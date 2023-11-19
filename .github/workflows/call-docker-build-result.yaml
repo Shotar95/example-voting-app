@@ -54,6 +54,7 @@ jobs:
         type=ref,event=branch
         type=semver,pattern={{version}}
         type=raw,value=gha-${{ github.run_id }}
+        
       # Path to where Docker should copy files into the image
       # Defaults to the root of the repository (.)
       context: result
