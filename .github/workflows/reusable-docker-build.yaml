@@ -179,7 +179,7 @@ jobs:
       - name: Run Trivy for all CVEs (non-blocking)
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: docker.io/***/examplevotingapp_vote:pr-3
+          image-ref: docker.io/shotar95/examplevotingapp_vote:pr-3
           exit-code: 0
           format: table 
 
