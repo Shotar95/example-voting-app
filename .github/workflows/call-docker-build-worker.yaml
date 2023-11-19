@@ -1,7 +1,7 @@
 name: Build Worker
 
 on:
-  # we want pull requests so we can build(test) but not push to image registry
+  # we want pull requests so we can build(test) but not pushto image registry
   push:
     branches:
       - 'main'
