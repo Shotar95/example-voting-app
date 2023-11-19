@@ -165,6 +165,23 @@ jobs:
           flavor: ${{ inputs.flavor-rules }}
           tags: ${{ inputs.tag-rules }}
 
+      - name: Build an image locally
+        uses: docker/build-push-action@v5
+        with:
+          push: false
+          load: true # Export to Docker Engine rather than pushing to a registry
+          tags: ${{ github.run_id }}s
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          platforms: linux/amd64
+
+      - name: Run Trivy for all CVEs (non-blocking)
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ inputs.image-names }}
+          exit-code: 0
+          format: table 
+
         # this will build the images, once per platform,
         # then push to one or more registries (based on image list above in docker_meta)
         # NOTE: this will not push if a PR is from a fork, where secrets are not available
@@ -190,13 +207,6 @@ jobs:
           # https://docs.docker.com/build/attestations/attestation-storage/
           provenance: true
           sbom: true
-
-      - name: Run Trivy for all CVEs (non-blocking)
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: ${{ inputs.image-names }}
-          exit-code: 0
-          format: table 
 
         # If PR, put image tags in the PR comments
         # from https://github.com/marketplace/actions/create-or-update-comment
