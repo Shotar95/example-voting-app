@@ -173,7 +173,7 @@ jobs:
           tags: ${{ github.run_id }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          platforms: ${{ inputs.platforms }}
+          platforms: linux/arm/v7
           context: ${{ inputs.context }}
 
       - name: Run Trivy for all CVEs (non-blocking)
