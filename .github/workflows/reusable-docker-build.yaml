@@ -130,7 +130,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         # we need qemu and buildx so we can build multiple platforms later
       - name: Set up QEMU
         id: qemu
