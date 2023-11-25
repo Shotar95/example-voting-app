@@ -184,6 +184,23 @@ jobs:
           exit-code: 0
           format: table 
 
+      - name: Run Trivy for HIGH,CRITICAL CVEs and report (blocking)
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ github.run_id }}
+          exit-code: 1
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'HIGH,CRITICAL'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+      
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'          
+
         # this will build the images, once per platform,
         # then push to one or more registries (based on image list above in docker_meta)
         # NOTE: this will not push if a PR is from a fork, where secrets are not available
