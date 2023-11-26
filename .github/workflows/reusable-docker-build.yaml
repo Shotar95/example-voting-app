@@ -114,6 +114,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   packages: write # needed to push docker image to ghcr.io
   pull-requests: write # needed to create and update comments in PRs
   security-events: write # for github/codeql-action/upload-sarif to upload SARIF results 
