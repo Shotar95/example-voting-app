@@ -12,7 +12,7 @@ on:
   pull_request:
     branches:
       - 'main'
-    # only build when important files change
+    # only build when important files chane
     paths:
       - 'worker/**'
       - '.github/workflows/call-docker-build-worker.yaml'
