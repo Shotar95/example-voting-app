@@ -178,7 +178,7 @@ jobs:
           platforms: linux/arm/v7
           context: ${{ inputs.context }}
 
-      #- name: Run Trivy for all CVEs (non-blocking)
+      #- name: Run Trivy for alssl CVEs (non-blocking)
       #  uses: aquasecurity/trivy-action@master
       #  with:
       #    image-ref: ${{ steps.cve_scan.outputs.imageid }}
