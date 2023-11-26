@@ -170,7 +170,7 @@ jobs:
         id: cve_scan
         with:
           push: false
-          load: true # Export to Docker Engine rather than pushing to a registry
+          load: true # Export to Docker Engine rsather than pushing to a registry
           tags: ${{ steps.docker_meta.outputs.tags }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
