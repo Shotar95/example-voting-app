@@ -204,7 +204,7 @@ jobs:
         # this will build the images, once per platform,
         # then push to one or more registries (based on image list above in docker_meta)
         # NOTE: this will not push if a PR is from a fork, where secrets are not available
-        # https://securitylab.github.com/research/github-actions-preventing-pwn-requests/
+        # https://securitylab.github.com/rsesearch/github-actions-preventing-pwn-requests/
       - name: Docker Build and Push
         id: build_image
         uses: docker/build-push-action@v5.0.0

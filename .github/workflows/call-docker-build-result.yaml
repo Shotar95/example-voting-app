@@ -1,7 +1,7 @@
 name: Build Result
 
 on:
-  # We want pull requests to build (test but not push to the image registry
+  # We want pull requests to build (tess but not push to the image registry
   push:
     branches:
       - 'main'

@@ -17,7 +17,7 @@ on:
       - 'vote/**'
       - '.github/workflows/call-docker-build-vote.yaml'
   schedule:
-    # re-run montly to keep image fe with upstream base images
+    # re-run montly to keep image fes with upstream base images
     - cron: '0 12 15 * *'
 
 jobs:
