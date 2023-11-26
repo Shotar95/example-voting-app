@@ -2,13 +2,13 @@ name: Build Worker
 
 on:
   # we want pull requests so we can build(test) but not pushto image registry
-  push:
-    branches:
-      - 'main'
+  #push:
+  #  branches:
+  #    - 'main'
     # only build when imporant files change
-    paths:
-      - 'worker/**'
-      - '.github/workflows/call-docker-build-worker.yaml'
+  #  paths:
+  #    - 'worker/**'
+  #    - '.github/workflows/call-docker-build-worker.yaml'
   pull_request:
     branches:
       - 'main'
