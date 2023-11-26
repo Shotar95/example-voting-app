@@ -199,7 +199,11 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         if: always()
         with:
-          sarif_file: 'trivy-results.sarif'          
+          sarif_file: 'trivy-results.sarif'   
+          run: |
+            echo "Debugging information before uploading Trivy scan results"
+            ls -l  # Print the list of files in the current directory
+            cat trivy-results.sarif  # Print the contents of the sarif file       
 
         # this will build the images, once per platform,
         # then push to one or more registries (based on image list above in docker_meta)
