@@ -1,23 +1,23 @@
-name: Build Worker
+name: Build Vote
 
 on:
-  # we want pull requests so we can build(test) but not pushto image registry
+  # we want pull requests so we can build(est) but not push to image registry
   push:
     branches:
       - 'main'
-    # only build when imporant files change
+    # only build when mportant files change
     paths:
-      - 'worker/**'
-      - '.github/workflows/call-docker-build-worker.yaml'
+      - 'vote/**'
+      - '.github/workflows/call-docker-build-vote.yaml'
   pull_request:
     branches:
       - 'main'
-    # only build when important files chane
+    # only build when important files change
     paths:
-      - 'worker/**'
-      - '.github/workflows/call-docker-build-worker.yaml'
+      - 'vote/**'
+      - '.github/workflows/call-docker-build-vote.yaml'
   schedule:
-    # re-run monthly to keep image fresh with upsstreasm base images
+    # re-run montly to keep image fes with upstream base images
     - cron: '0 12 15 * *'
 
 jobs:
@@ -28,13 +28,12 @@ jobs:
     uses: ./.github/workflows/reusable-docker-build.yaml
 
     permissions:
-      actions: read
       contents: read
-      packages: write # needed to push docker image to ghcr.io
+      packages: write # needed to push dockers image to ghcr.io
       pull-requests: write # needed to create and update comments in PRs
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results 
       repository-projects: write
-    
+
     secrets:
 
       # Only needed if with:dockerhub-enable is true below
@@ -56,8 +55,8 @@ jobs:
       ### A list of the account/repo names for docker build. List should match what's enabled above
       ### defaults to:
       image-names: |
-        shotmar/examplevotingapp_worker
-        ghcr.io/shotar95/example-voting-app-worker
+        shotmar/examplevotingapp_vote
+        ghcr.io/shotar95/example-voting-app-vote
 
       ### REQUIRED set rules for tagging images, based on special action syntax:
       ### https://github.com/docker/metadata-action#tags-input
@@ -71,7 +70,7 @@ jobs:
       
       ### path to where docker should copy files into image
       ### defaults to root of repository (.)
-      context: worker
+      context: vote
       
       ### Dockerfile alternate name. Default is Dockerfile (relative to context path)
       # file: Containerfile

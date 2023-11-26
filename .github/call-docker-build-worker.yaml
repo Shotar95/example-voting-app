@@ -28,7 +28,6 @@ jobs:
     uses: ./.github/workflows/reusable-docker-build.yaml
 
     permissions:
-      actions: read
       contents: read
       packages: write # needed to push docker image to ghcr.io
       pull-requests: write # needed to create and update comments in PRs

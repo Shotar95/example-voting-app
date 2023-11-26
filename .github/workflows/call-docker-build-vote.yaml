@@ -1,11 +1,11 @@
 name: Build Vote
 
 on:
-  # we want pull requests so we can build(test) but not push to image registry
+  # we want pull requests so we can build(est) but not push to image registry
   push:
     branches:
       - 'main'
-    # only build when important files change
+    # only build when mportant files change
     paths:
       - 'vote/**'
       - '.github/workflows/call-docker-build-vote.yaml'
@@ -17,7 +17,7 @@ on:
       - 'vote/**'
       - '.github/workflows/call-docker-build-vote.yaml'
   schedule:
-    # re-run montly to keep image fesh with upstream base images
+    # re-run montly to keep image fes with uspstream base images
     - cron: '0 12 15 * *'
 
 jobs:
@@ -25,13 +25,16 @@ jobs:
 
     name: Call Docker Build
 
-    uses: bretfisher/docker-build-workflow/.github/workflows/reusable-docker-build.yaml@main
+    uses: ./.github/workflows/reusable-docker-build.yaml
 
     permissions:
       contents: read
+      actions: read
       packages: write # needed to push docker image to ghcr.io
-      pull-requests: write # needed to create and update comments in PRs
-    
+      pull-requests: write # needesd to create and update comments in PRs
+      security-events: write # for github/codeql-action/upload-sarif to upload SARIF results 
+      repository-projects: write
+
     secrets:
 
       # Only needed if with:dockerhub-enable is true below
@@ -53,7 +56,7 @@ jobs:
       ### A list of the account/repo names for docker build. List should match what's enabled above
       ### defaults to:
       image-names: |
-        shotar95/examplevotingapp_vote
+        shotmar/examplevotingapp_vote
         ghcr.io/shotar95/example-voting-app-vote
 
       ### REQUIRED set rules for tagging images, based on special action syntax:
