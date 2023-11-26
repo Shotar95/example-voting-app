@@ -2,20 +2,20 @@ name: Build Result
 
 on:
   # We want pull requests to builds (tess but not push to the image registry
-  #push:
-  #  branches:
-  #    - 'main'
-  #  # Only build hen important files change
-  #  paths:
-  #    - 'result/**'
-  #    - '.github/workflows/call-docker-build-result.yaml'
-  pull_request:
+  push:
     branches:
       - 'main'
-    # Only build when important files change
+    # Only build hen important files change
     paths:
       - 'result/**'
       - '.github/workflows/call-docker-build-result.yaml'
+  #pull_request:
+  #  branches:
+  #    - 'main'
+  #  # Only build when important files change
+  #  paths:
+  #    - 'result/**'
+  #    - '.github/workflows/call-docker-build-result.yaml'
   schedule:
     # Re-run monthly to keep he imge fresh with upstream base images
     - cron: '0 12 15 * *'
