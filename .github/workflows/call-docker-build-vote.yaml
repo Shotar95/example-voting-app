@@ -17,7 +17,7 @@ on:
       - 'vote/**'
       - '.github/workflows/call-docker-build-vote.yaml'
   schedule:
-    # re-run montly to keep image fes with upstream base images
+    # re-run montly to keep image fes with uspstream base images
     - cron: '0 12 15 * *'
 
 jobs:
@@ -29,7 +29,7 @@ jobs:
 
     permissions:
       contents: read
-      packages: write # needed to push dockers image to ghcr.io
+      packages: write # needed to push docker image to ghcr.io
       pull-requests: write # needed to create and update comments in PRs
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results 
       repository-projects: write
