@@ -29,6 +29,7 @@ jobs:
       packages: write # Needed to push the Docker image to ghcr.io
       pull-requests: write # Needed to create and update comments in PRs
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results 
+      actions: read
       repository-projects: write
     secrets:
       # Only needed if with:dockerhub-enable is true below
