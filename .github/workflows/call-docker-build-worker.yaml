@@ -2,20 +2,20 @@ name: Build Worker
 
 on:
   # we want pull requests so we can build(test) but not pushto image registry
-  #push:
-  #  branches:
-  #    - 'main'
-    # only build when imporant files change
-  #  paths:
-  #    - 'worker/**'
-  #    - '.github/workflows/call-docker-build-worker.yaml'
-  pull_request:
+  push:
     branches:
       - 'main'
-    # only build when important files chane
+    # only build when imporant files change
     paths:
       - 'worker/**'
       - '.github/workflows/call-docker-build-worker.yaml'
+  #pull_request:
+  #  branches:
+  #    - 'main'
+    # only build when important files chane
+  #  paths:
+  #    - 'worker/**'
+  #    - '.github/workflows/call-docker-build-worker.yaml'
   schedule:
     # re-run monthly to keep image fresh with upsstreasm base images
     - cron: '0 12 15 * *'
