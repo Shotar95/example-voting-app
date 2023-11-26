@@ -1,7 +1,7 @@
 name: Build Result
 
 on:
-  # We want pull requests to builds (tess but not push to the image registry
+  # We want pull requests to busilds (tess but not push to the image registry
   push:
     branches:
       - 'main'
